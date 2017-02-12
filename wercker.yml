@@ -1,0 +1,28 @@
+box: node:6.9.1
+build:
+  steps:
+    - npm-install
+    - script:
+        name: Run unit tests
+        code: |
+          npm run test
+deploy:
+  steps:
+    - script:
+        name: Compile App & Assets
+        code: |
+          npm run build
+    - analogj/git-configure@0.0.3
+    - script:
+        name: Commit Assets
+        code: |
+          git config --global user.email "shane@repllabs.com"
+          git config --global user.name "Wercker Bot"
+          git checkout -b wercker-build
+          git add dist/*
+          git commit -am 'asset compile'
+    - heroku-deploy:
+        key: $HEROKU_KEY
+        key-name: DEPLOY_KEY
+        user: $HEROKU_USER
+        app-name: $HEROKU_APP_NAME
