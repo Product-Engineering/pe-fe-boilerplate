@@ -22,7 +22,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: `[name].[chunkhash].js`,
-    publicPath: '/dist/'
+    publicPath: `https://pe-fe-boilerplate-staging.herokuapp.com/dist/`
   },
 
   plugins: [
@@ -58,12 +58,16 @@ module.exports = {
         include: path.join(__dirname, 'src', 'styles')
       },
       {
-        test: /\.png$/,
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url?limit=8192'
+      },
+      {
+        test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
         loader: 'file'
       },
       {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file'
+        test: /\.svg(\?.*)?$/,
+        loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml'
       }
     ]
   }

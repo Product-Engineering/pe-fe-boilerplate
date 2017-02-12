@@ -1,3 +1,39 @@
-h1 {
-  color: blue;
+.gradient__rolling {
+  background: linear-gradient(323deg, #AADF1D, #2DB101);
+  background-size: 600% 600%;
+
+  -webkit-animation: RollGradient 20s ease infinite;
+  -moz-animation: RollGradient 20s ease infinite;
+  animation: RollGradient 20s ease infinite;
+
+  @-webkit-keyframes RollGradient {
+    0%{background-position:0% 4%}
+    50%{background-position:100% 97%}
+    100%{background-position:0% 4%}
+  }
+  @-moz-keyframes RollGradient {
+    0%{background-position:0% 4%}
+    50%{background-position:100% 97%}
+    100%{background-position:0% 4%}
+  }
+  @keyframes RollGradient {
+    0%{background-position:0% 4%}
+    50%{background-position:100% 97%}
+    100%{background-position:0% 4%}
+  }
+}
+.hero__image--wrapper {
+  width: 53rem;
+}
+.hero__image--brand {
+  width: 100%;
+  background: url('../assets/pe_webpack_header.svg') no-repeat center top;
+  background-size: contain;
+  padding: 0;
+  padding-bottom: 17%;
+}
+.service__icon--github {
+  background: url('../assets/service__icon--github.png') no-repeat center top;
+  background-size: contain;
+  height: 4rem;
 }
